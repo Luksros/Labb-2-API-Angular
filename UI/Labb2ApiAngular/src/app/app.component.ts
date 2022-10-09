@@ -52,14 +52,14 @@ export class AppComponent {
   }
 
   getAllEmployees(){
-    console.log('Get all')
+    // console.log('Get all')
     this.employeeService.getAllEmployees()
     .subscribe(
       response => {this.employees = response;})
   }
 
   empOnSubmit(){
-    console.log(this.employee)
+    // console.log(this.employee)
     if(this.employee.id == ''){
       this.employeeService.addEmployee(this.employee).subscribe(
         response => {
