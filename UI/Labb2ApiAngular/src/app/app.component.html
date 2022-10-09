@@ -1,0 +1,94 @@
+<body style="background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgb(40, 40, 40) 0%, rgb(68, 68, 68) 56%);">
+  <div class="container">
+    <div class="container text-center">
+      <h1 class="mainHeader">Employee Registration</h1>
+      
+    </div>
+    <div class="container">
+      <div class="row">
+        
+        <div class="col-6 col-6mod" style="background-color: rgb(141, 141, 141); padding-left: 25px; padding-top: 16px;"> 
+          <h2>Register New Employee</h2>
+        <hr>
+          <div class="employee-form">
+            <form #form="ngForm" (ngSubmit)="empOnSubmit()">
+              
+              <h5 class="formHeader">Name</h5>
+              <hr>
+
+                <div class="form-group">
+                  <input type="text" name="firstName" placeholder="First Name" [(ngModel)] = "employee.firstName"> 
+                </div>
+                <div class="form-group">
+                  <input type="text" name="lastName" placeholder="Last Name"[(ngModel)] = "employee.lastName"> 
+                </div>
+
+              <br>
+  
+              <h5 class="formHeader">Employment</h5>
+              <hr>
+                <div class="form-group">
+                  <!-- <input type="text" name="departmentID" placeholder="Department" [(ngModel)] = "employee.departmentID"> -->
+                  <select id="departments" name="departments" [(ngModel)] = "employee.departmentID">
+                    <option value="" disabled selected hidden>Department</option>
+                    <option *ngFor="let dep of departments" value="{{dep.id}}">{{dep.departmentName}}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <input type="text" name="title" placeholder="Title" [(ngModel)] = "employee.title"> 
+                </div>             
+              <div class="form-group">
+                <input type="text" name="salary" placeholder="Salary" [(ngModel)] = "employee.salary">
+              </div>
+              <br>
+  
+              <h5 class="formHeader">Personal</h5>
+              <hr>
+
+                <div class="form-group">
+                  <input type="text" name="address" placeholder="Address" [(ngModel)] = "employee.address">
+                </div>
+                <div class="form-group">
+                  <!-- <input type="text" name="genderID" placeholder="Gender" [(ngModel)] = "employee.genderID"> -->
+                  <select id="genders" name="genders" [(ngModel)] = "employee.genderID">
+                    <option value="" disabled selected hidden>Gender</option>
+                    <option *ngFor="let gen of genders" value="{{gen.id}}">{{gen.genderName}}</option>
+                  </select>
+                </div>
+              <br>
+              
+              <div class="form-group">
+                <button>Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-6 col-6mod" style="background-color: rgb(141, 141, 141); padding-right: 25px; padding-top: 16px;">
+          <h2>Current Employees</h2>
+                  <hr>
+          <div class="container right">
+            <div class="row">         
+                <div class="col-6" *ngFor="let emp of employees">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight:bolder">{{emp.firstName}} {{emp.lastName}}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Employment ID: {{emp.id}}</h6>
+                      <h6 class="card-subtitle mb-2 text-muted">{{emp.department?.departmentName}}</h6>
+                      <h6 class="card-subtitle mb-2 text-muted">{{emp.title}}</h6>
+                      <span class="card-text"><span style="font-weight:bold">Monthly Salary:</span> {{emp.salary}}</span><br>
+                      <span class="card-text"><span style="font-weight:bold">Address:</span> {{emp.address}}</span><br>
+                      <span class="card-text"><span style="font-weight:bold">Gender:</span> {{emp.gender?.genderName}}</span><br>
+                      <div class="buttonContainer">
+                        <a (click)="populateForm(emp)"><i class="fa-solid fa-pen-to-square" style="color:rgb(138, 138, 255)"></i></a>
+                        <a (click)="empOnDelete(emp.id)"><i class="fa-solid fa-trash-can" style="color: red"></i></a> 
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+</body>
