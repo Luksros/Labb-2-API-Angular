@@ -15,6 +15,16 @@ body{
 .card{
     margin-top: 10px;
     margin-bottom: 10px;
+    transition: opacity 350ms ease;
+}
+
+a i{
+    filter: saturate(0%);
+    transition: 250ms ease;
+}
+
+a i:hover{
+    filter: saturate(100%);
 }
 
 .form-group input, #genders, #departments{
@@ -40,12 +50,17 @@ option{
     
 
 }
+
 .right{
     max-height: 520px;
     overflow-y: scroll;
     scroll-behavior: smooth;
     background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgb(40, 40, 40) 0%, rgb(141, 141, 141) 56%);
     border-radius: 4px;
+}
+
+.right:has(.card:hover) .card:not(:hover){
+    opacity: .6;
 }
 
 body{
@@ -82,3 +97,5 @@ html, body {
 .formHeader{
     text-align: center;
 }
+
+
